@@ -12,12 +12,15 @@
             var updateInventory = inventory => {
                 return $http.put(apiendpoint + '/UpdateInventory/', inventory);
             }
-
+            var deleteInventoryById = id => {
+                return $http.delete(apiendpoint + '/DeleteInventoryById/' + id);
+            }
 
             return {
                 GetInventoryList: getInventoryList,
                 CreateInventory: createInventory,
-                UpdateInventory: updateInventory
+                UpdateInventory: updateInventory,
+                DeleteInventoryById: deleteInventoryById
             };
         }]);
 })();

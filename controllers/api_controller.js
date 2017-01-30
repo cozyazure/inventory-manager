@@ -51,6 +51,11 @@ router.put('/UpdateInventory', (req, res, next) => {
         })
 });
 
+router.delete('/DeleteInventoryById/:id', (req, res, next) => {
+    var deleteId = req.params.id;
+    console.log('id',deleteId);
+    db.none('DELETE FROM inventory WHERE id = $1', deleteId)
+})
 
 function ResolveDbError(error, resFunc) {
     console.log('DB trx error', error);

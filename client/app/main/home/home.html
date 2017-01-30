@@ -32,7 +32,7 @@
             <td>{{inventory.price |currency}}</td>
             <td style="text-align: center">
                 <i class="fa fa-edit cursor-pointer" ui-sref="main.createedit({createeditData: inventory})"></i> &nbsp;
-                <i class="fa fa-trash cursor-pointer"></i>
+                <i class="fa fa-trash cursor-pointer" ng-click="deleteInventory(inventory.id)"></i>
                 </td>
         </tr>
     </table>

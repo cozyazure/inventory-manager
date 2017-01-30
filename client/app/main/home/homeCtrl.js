@@ -9,5 +9,11 @@
 
             $scope.orderByField = 'id';
             $scope.reverseSort = false;
+
+            $scope.deleteInventory = id =>{
+                Resource.DeleteInventoryById(id).then(response=>{
+                    console.log('deleted',response);
+                })
+            }
         }])
 })();
