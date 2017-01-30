@@ -9,7 +9,7 @@ var pgp = require('pg-promise')(options);
 
 var devDbPassword = "password";
 
-var devConnectionString = 'postgres://postgres:' + devDbPassword + '@localhost:5432/inventory-manager';
+var devConnectionString = 'postgres://postgres:' + devDbPassword + '@localhost:5432/inventorydb';
 var prodConnectionString = 'postgres://jxglyuvbxhqtaa:drHWOW7i-zE9d70DPCyo9kMcoV@ec2-54-243-187-133.compute-1.amazonaws.com:5432/dd5g3cd59786rr';
 var db_development = pgp(devConnectionString);
 var db_production = pgp(prodConnectionString);

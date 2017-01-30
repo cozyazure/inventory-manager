@@ -12,6 +12,22 @@ router.get('/', (req, res, next) => {
     res.json({ "JonSnow": "You know nothing" })
 })
 
+router.get('/inventorylist', (req, res, next) => {
+    //todo, just mock an API endpoint
+    var SQL = 'SELECT * FROM inventory';
+    db.manyOrNone(SQL).then((result) => {
+            //no matchin results, return 401
+            if (result === null) {
+                return res.status(404).json({ "ErrorMessage": "No inventory exists" });
+            }
+            return res.json(result);
+        })
+        .catch((error) => {
+            ResolveDbError(error, res);
+        })
+})
+
+
 
 function ResolveDbError(error, resFunc) {
     console.log('DB trx error', error);
