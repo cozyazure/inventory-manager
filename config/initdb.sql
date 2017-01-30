@@ -5,6 +5,7 @@ CREATE DATABASE inventorydb;
 
 \c inventorydb;
 
+
 CREATE TABLE inventory (
   ID SERIAL PRIMARY KEY,
   name VARCHAR,

@@ -1,7 +1,7 @@
 (() => {
     'use strict';
     angular.module('inventory-manager')
-        .controller('homeCtrl', ['$scope', 'Resource', function($scope, Resource) {
+        .controller('homeCtrl', ['$scope', '$state', 'Resource', function($scope,$state, Resource) {
             Resource.GetInventoryList().then((response) => {
                 $scope.inventoryList = response.data;
             })
@@ -12,7 +12,7 @@
 
             $scope.deleteInventory = id =>{
                 Resource.DeleteInventoryById(id).then(response=>{
-                    console.log('deleted',response);
+                    $state.reload();
                 })
             }
         }])

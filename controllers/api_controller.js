@@ -53,8 +53,9 @@ router.put('/UpdateInventory', (req, res, next) => {
 
 router.delete('/DeleteInventoryById/:id', (req, res, next) => {
     var deleteId = req.params.id;
-    console.log('id',deleteId);
-    db.none('DELETE FROM inventory WHERE id = $1', deleteId)
+    db.none('DELETE FROM inventory WHERE id = $1', deleteId).then(result => {
+        return res.status(204).json({ 'message': 'deleted' });
+    });
 })
 
 function ResolveDbError(error, resFunc) {

@@ -4,7 +4,7 @@
             <h2>Inventory Listing</h2>
         </div>
         <div style="display: inline-block; margin-top:1.2em;" class="pull-right">
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" ui-sref="main.createedit({createeditData: null})">
                 Create New
             </button>
         </div>
@@ -16,7 +16,6 @@
     <br>
     <table class="table table-bordered">
         <tr>
-            <th> Id <i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='id';reverseSort = false"></i></th>
             <th> Name<i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='name';reverseSort = !reverseSort"></i></i>
             </th>
             <th>Category <i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='category';reverseSort = !reverseSort"></th>
@@ -25,7 +24,6 @@
             <th style="text-align: center"> Action </th>
         </tr>
         <tr ng-repeat="inventory in inventoryList |orderBy:orderByField:reverseSort| filter:search">
-            <td>{{inventory.id}}</td>
             <td>{{inventory.name}}</td>
             <td>{{inventory.category}}</td>
             <td>{{inventory.quantity}}</td>
