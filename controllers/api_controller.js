@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     res.json({ "JonSnow": "You know nothing" })
 })
 
-router.get('/inventorylist', (req, res, next) => {
+router.get('/GetInventorylist', (req, res, next) => {
     //todo, just mock an API endpoint
     var SQL = 'SELECT * FROM inventory';
     db.manyOrNone(SQL).then((result) => {
@@ -25,8 +25,18 @@ router.get('/inventorylist', (req, res, next) => {
         .catch((error) => {
             ResolveDbError(error, res);
         })
-})
+});
 
+router.put('/UpdateInventory', (req, res, next) => {
+    //update to db
+    db.manyOrNone('UPDATE inventory SET name = ${name}, category=${category}, quantity=${quantity}, price = ${price} WHERE id = ${id} RETURNING *', req.body)
+        .then((result) => {
+            return res.status(200).json(result);
+        })
+        .catch((error) => {
+            ResolveDbError(error, res);
+        })
+});
 
 
 function ResolveDbError(error, resFunc) {

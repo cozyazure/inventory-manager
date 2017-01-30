@@ -10,6 +10,7 @@ app.set('view engine', 'html');
 app.use(express.static('./client')); 	
 //set up 
 app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());
 
 // call routes.js that manage controllers
 require('./routes')(app);
