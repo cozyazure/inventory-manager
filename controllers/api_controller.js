@@ -8,12 +8,25 @@ const path = require('path');
 const db = require('../config/db_connection')[server.get('env')];
 
 router.get('/', (req, res, next) => {
-    //todo, just mock an API endpoint
+    //just mock an API endpoint for quick testing
     res.json({ "JonSnow": "You know nothing" })
 })
 
-router.get('/GetInventorylist', (req, res, next) => {
-    //todo, just mock an API endpoint
+router.post('/CreateInventory', (req, res, next) => {
+    var payload = req.body;
+    //todo, sanitize
+    db.one('INSERT INTO inventory(name,category,quantity,price) ' +
+            'VALUES (${name},${category},${quantity},${price})' +
+            'RETURNING *', payload)
+        .then((result) => {
+            return res.json(result);
+        })
+        .catch((error) => {
+            ResolveDbError(error, res);
+        })
+});
+
+router.get('/GetInventoryList', (req, res, next) => {
     var SQL = 'SELECT * FROM inventory';
     db.manyOrNone(SQL).then((result) => {
             //no matchin results, return 401

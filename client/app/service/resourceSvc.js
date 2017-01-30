@@ -6,13 +6,17 @@
             var getInventoryList = () => {
                 return $http.get(apiendpoint + '/GetInventorylist');
             }
-
+            var createInventory = inventory => {
+                return $http.post(apiendpoint + '/CreateInventory', inventory);
+            }
             var updateInventory = inventory => {
-                console.log('got in',inventory)
                 return $http.put(apiendpoint + '/UpdateInventory/', inventory);
             }
+
+
             return {
                 GetInventoryList: getInventoryList,
+                CreateInventory: createInventory,
                 UpdateInventory: updateInventory
             };
         }]);
