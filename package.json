@@ -6,7 +6,7 @@
   "scripts": {
     "start": "forever --watchDirectory . bin/www",
     "dev": "nodemon -w . ./bin/www",
-    "test": "mocha"
+    "postinstall": "bower install"
   },
   "engines": {
     "node": "6.9.1"
@@ -24,6 +24,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
     "express-fileupload": "0.0.5",
