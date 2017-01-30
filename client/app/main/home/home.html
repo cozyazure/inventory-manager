@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <div style="display: inline-block;">
+            <h2>Inventory Listing</h2>
+        </div>
+        <div style="display: inline-block; margin-top:1.2em;" class="pull-right">
+            <button class="btn btn-primary">
+                Create New
+            </button>
+        </div>
+    </div>
+    <div class="input-group ">
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search" ng-model="search">
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <tr>
+            <th> Id <i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='id';reverseSort = false"></i></th>
+            <th> Name<i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='name';reverseSort = !reverseSort"></i></i>
+            </th>
+            <th>Category <i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='category';reverseSort = !reverseSort"></th>
+            <th>Quantity<i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='quantity';reverseSort = !reverseSort"></th>
+            <th>Price<i class="fa fa-sort pull-right cursor-pointer" ng-click="orderByField='price';reverseSort = !reverseSort"></th>
+            <th style="text-align: center"> Action </th>
+        </tr>
+        <tr ng-repeat="inventory in inventoryList |orderBy:orderByField:reverseSort| filter:search">
+            <td>{{inventory.id}}</td>
+            <td>{{inventory.name}}</td>
+            <td>{{inventory.category}}</td>
+            <td>{{inventory.quantity}}</td>
+            <td>{{inventory.price |currency}}</td>
+            <td style="text-align: center">
+                <i class="fa fa-edit cursor-pointer" ui-sref="main.createedit({createeditData: { maindata : inventory}})"></i> &nbsp;
+                <i class="fa fa-trash cursor-pointer"></i>
+                </td>
+        </tr>
+    </table>
+</div>
